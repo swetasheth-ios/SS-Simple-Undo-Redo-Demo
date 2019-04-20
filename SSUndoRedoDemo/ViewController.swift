@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  SSUndoRedoDemo
 //
-//  Created by Sweta on 20/04/19.
+//  Created by Sweta on 19/04/19.
 //  Copyright © 2019 Sweta. All rights reserved.
 //
 
@@ -92,7 +92,7 @@ extension ViewController
             sender.setTitle("Create Group", for: .normal)
             
             self.undoMng.endUndoGrouping()
-            self.undoMng.groupsByEvent = false
+            self.undoMng.groupsByEvent = true
         }
     }
     
@@ -106,10 +106,10 @@ extension ViewController
         self.undoMng.registerUndo(withTarget: self, selector:
             #selector(self.setObject(_:)), object: oldObject)
         
-        //2. Second way to register undo
-        self.undoMng.registerUndo(withTarget: self, handler: { (targetSelf) in
-            targetSelf.setObject(oldObject)
-        })
+        //        //2. Second way to register undo
+        //        self.undoMng.registerUndo(withTarget: self, handler: { (targetSelf) in
+        //            targetSelf.setObject(oldObject)
+        //        })
         
         lbl.text = object as! String
         self.enableDisableUIControl()
